@@ -516,162 +516,212 @@ area.querySelector(".question").append(feedback,next);
 
 // قسم كرة القدم
 
-const footballData={
-skills:{
-title:"⚽ المهارات الأساسية",
-items:[
-"التحكم في الكرة: حاول الحفاظ على الكرة قريبة من قدميك.",
-"التمرير: تعلم تمرير الكرة بدقة إلى زميلك.",
-"المراوغة: تدرب على تغيير الاتجاه والتحكم في الكرة.",
-"التسديد: تعلم توجيه الكرة نحو المرمى.",
-"اللعب الجماعي: تعلم التعاون والتواصل مع الفريق."
-]
-},
-training:{
-title:"🏃 التدريبات",
-items:[
-"الإحماء الخفيف قبل بداية التدريب.",
-"تمارين التحكم بالكرة في مساحة آمنة.",
-"التدرب على التمرير مع زميل.",
-"التدرب على تغيير الاتجاه والتوازن.",
-"تمارين التهدئة والراحة بعد التدريب."
-]
-},
-rules:{
-title:"📖 قوانين كرة القدم",
-items:[
-"يتكون كل فريق من 11 لاعبا داخل الملعب.",
-"تستمر المباراة العادية 90 دقيقة مقسمة إلى شوطين.",
-"توجد ركلة ركنية عندما تخرج الكرة من خط المرمى بعد لمسها من مدافع.",
-"الحكم مسؤول عن تطبيق قوانين اللعبة.",
-"التسلل له شروط محددة مرتبطة بمكان اللاعب ولحظة لعب الكرة."
-]
-},
-plan:{
-title:"📅 برنامج أسبوعي نموذجي",
-items:[
-"الاثنين: التحكم في الكرة والتمرير.",
-"الثلاثاء: الراحة أو نشاط خفيف.",
-"الأربعاء: المراوغة والتوازن.",
-"الخميس: التمرير والعمل الجماعي.",
-"الجمعة: تدريبات خفيفة.",
-"السبت: مباراة تدريبية.",
-"الأحد: الراحة والتعافي."
-]
-},
-positions:{
-title:"🧤 مراكز اللاعبين",
-items:[
-"حارس المرمى: حماية المرمى.",
-"المدافع: حماية المنطقة الخلفية.",
-"وسط الميدان: الربط بين الدفاع والهجوم.",
-"الجناح: اللعب على الأطراف وصناعة الفرص.",
-"المهاجم: محاولة تسجيل الأهداف."
-]
-}
+const footballData = {
+  skills: {
+    title: "⚽ المهارات الأساسية",
+    items: [
+      "التحكم في الكرة.",
+      "التمرير بدقة.",
+      "المراوغة وتغيير الاتجاه.",
+      "التسديد نحو المرمى.",
+      "اللعب الجماعي."
+    ]
+  },
+  training: {
+    title: "🏃 التدريبات",
+    items: [
+      "الإحماء الخفيف.",
+      "التدرب على التحكم بالكرة.",
+      "تمارين التمرير مع زميل.",
+      "تمارين التوازن.",
+      "الراحة بعد التدريب."
+    ]
+  },
+  rules: {
+    title: "📖 قوانين كرة القدم",
+    items: [
+      "كل فريق يتكون من 11 لاعبا.",
+      "المباراة العادية 90 دقيقة.",
+      "الحكم مسؤول عن تطبيق القوانين.",
+      "البطاقة الحمراء تعني الطرد.",
+      "التسلل له شروط محددة."
+    ]
+  },
+  plan: {
+    title: "📅 البرنامج الأسبوعي",
+    items: [
+      "الاثنين: التحكم والتمرير.",
+      "الثلاثاء: الراحة.",
+      "الأربعاء: المراوغة.",
+      "الخميس: اللعب الجماعي.",
+      "الجمعة: تدريب خفيف.",
+      "السبت: مباراة تدريبية.",
+      "الأحد: الراحة."
+    ]
+  },
+  positions: {
+    title: "🧤 مراكز اللاعبين",
+    items: [
+      "حارس المرمى: حماية المرمى.",
+      "المدافع: حماية الفريق.",
+      "وسط الميدان: تنظيم اللعب.",
+      "الجناح: اللعب على الأطراف.",
+      "المهاجم: تسجيل الأهداف."
+    ]
+  }
 };
 
-function showFootball(type){
-const data=footballData[type];
-const area=document.getElementById("footballContent");
-area.innerHTML="";
+function showFootball(type) {
+  const area = document.getElementById("footballContent");
 
-let box=document.createElement("div");
-box.className="content-box";
+  if (!area) {
+    alert("ما لقيناش footballContent في HTML");
+    return;
+  }
 
-let title=document.createElement("h3");
-title.textContent=data.title;
-box.appendChild(title);
+  const data = footballData[type];
 
-let list=document.createElement("ul");
+  if (!data) {
+    alert("هاد القسم غير موجود");
+    return;
+  }
 
-data.items.forEach(item=>{
-let li=document.createElement("li");
-li.textContent=item;
-list.appendChild(li);
-});
+  area.replaceChildren();
 
-box.appendChild(list);
-area.appendChild(box);
+  const box = document.createElement("div");
+  box.className = "content-box";
+
+  const title = document.createElement("h3");
+  title.textContent = data.title;
+
+  const list = document.createElement("ul");
+
+  data.items.forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = item;
+    list.appendChild(li);
+  });
+
+  box.append(title, list);
+  area.appendChild(box);
+
+  area.scrollIntoView({
+    behavior: "smooth",
+    block: "nearest"
+  });
 }
 
-// اختبار كرة القدم
-
-const footballQuestions=[
-{q:"كم عدد لاعبي الفريق داخل الملعب؟",a:["9","11","12"],c:1},
-{q:"كم مدة المباراة العادية؟",a:["60 دقيقة","90 دقيقة","120 دقيقة"],c:1},
-{q:"من يحمي المرمى؟",a:["المهاجم","المدافع","حارس المرمى"],c:2},
-{q:"ما لون البطاقة التي تعني الطرد؟",a:["الأصفر","الأحمر","الأزرق"],c:1},
-{q:"كم عدد أشواط المباراة العادية؟",a:["شوط واحد","شوطان","ثلاثة"],c:1},
-{q:"من المسؤول عن تطبيق القوانين؟",a:["الحكم","الجمهور","المدرب"],c:0}
+const footballQuestions = [
+  {q:"كم عدد لاعبي الفريق؟",a:["9","11","12"],c:1},
+  {q:"كم مدة المباراة العادية؟",a:["60 دقيقة","90 دقيقة","120 دقيقة"],c:1},
+  {q:"من يحمي المرمى؟",a:["المهاجم","المدافع","الحارس"],c:2},
+  {q:"ما لون بطاقة الطرد؟",a:["الأصفر","الأحمر","الأزرق"],c:1},
+  {q:"كم عدد أشواط المباراة؟",a:["واحد","اثنان","ثلاثة"],c:1},
+  {q:"من يطبق قوانين اللعبة؟",a:["الحكم","الجمهور","المدرب"],c:0}
 ];
 
-let footballScore=0;
-let footballIndex=0;
+let footballScore = 0;
+let footballIndex = 0;
 
-function startFootballQuiz(){
-footballScore=0;
-footballIndex=0;
-document.getElementById("footballQuiz").innerHTML="";
-document.getElementById("football").scrollIntoView();
-showFootballQuestion();
+function startFootballQuiz() {
+  footballScore = 0;
+  footballIndex = 0;
+
+  const area = document.getElementById("footballQuiz");
+
+  if (!area) {
+    alert("ما لقيناش footballQuiz في HTML");
+    return;
+  }
+
+  showFootballQuestion();
+  area.scrollIntoView({behavior:"smooth"});
 }
 
-function showFootballQuestion(){
-const area=document.getElementById("footballQuiz");
-area.innerHTML="";
+function showFootballQuestion() {
+  const area = document.getElementById("footballQuiz");
+  area.replaceChildren();
 
-if(footballIndex>=footballQuestions.length){
-area.innerHTML=`
-<div class="question">
-<h3>🏆 انتهى الاختبار!</h3>
-<p>نتيجتك: ${footballScore} / ${footballQuestions.length}</p>
-<p>${Math.round(footballScore/footballQuestions.length*100)}%</p>
-<button class="btn" onclick="startFootballQuiz()">أعد الاختبار</button>
-</div>`;
-return;
+  if (footballIndex >= footballQuestions.length) {
+    const box = document.createElement("div");
+    box.className = "question";
+
+    const title = document.createElement("h3");
+    title.textContent = "🏆 انتهى الاختبار!";
+
+    const result = document.createElement("p");
+    result.textContent =
+      "النقطة: " + footballScore + " / " +
+      footballQuestions.length;
+
+    const percentage = document.createElement("p");
+    percentage.textContent =
+      "النسبة: " +
+      Math.round(footballScore / footballQuestions.length * 100) + "%";
+
+    const retry = document.createElement("button");
+    retry.className = "btn";
+    retry.textContent = "إعادة الاختبار";
+    retry.onclick = startFootballQuiz;
+
+    box.append(title, result, percentage, retry);
+    area.appendChild(box);
+    return;
+  }
+
+  const q = footballQuestions[footballIndex];
+
+  const box = document.createElement("div");
+  box.className = "question";
+
+  const title = document.createElement("h3");
+  title.textContent =
+    "السؤال " + (footballIndex + 1) +
+    " من " + footballQuestions.length;
+
+  const question = document.createElement("p");
+  question.textContent = q.q;
+
+  box.append(title, question);
+
+  q.a.forEach((answer, index) => {
+    const button = document.createElement("button");
+    button.className = "answer";
+    button.textContent = answer;
+
+    button.onclick = () => {
+      box.querySelectorAll(".answer").forEach(b => {
+        b.disabled = true;
+      });
+
+      const feedback = document.createElement("p");
+      feedback.className = "result";
+
+      if (index === q.c) {
+        footballScore++;
+        feedback.textContent = "✅ جواب صحيح!";
+      } else {
+        feedback.textContent = "❌ الجواب الصحيح: " + q.a[q.c];
+      }
+
+      const next = document.createElement("button");
+      next.className = "btn";
+      next.textContent = "السؤال التالي";
+
+      next.onclick = () => {
+        footballIndex++;
+        showFootballQuestion();
+      };
+
+      box.append(feedback, next);
+    };
+
+    box.appendChild(button);
+  });
+
+  area.appendChild(box);
 }
 
-let q=footballQuestions[footballIndex];
-
-let box=document.createElement("div");
-box.className="question";
-
-let title=document.createElement("h3");
-title.textContent="السؤال "+(footballIndex+1)+" من "+footballQuestions.length;
-
-let question=document.createElement("p");
-question.textContent=q.q;
-
-box.append(title,question);
-
-q.a.forEach((answer,index)=>{
-let button=document.createElement("button");
-button.className="answer";
-button.textContent=answer;
-
-button.onclick=()=>{
-box.querySelectorAll(".answer").forEach(b=>b.disabled=true);
-
-let feedback=document.createElement("p");
-feedback.className="result";
-
-if(index===q.c){
-footballScore++;
-feedback.textContent="✅ إجابة صحيحة!";
-feedback.style.color="green";
-}else{
-feedback.textContent="❌ الجواب الصحيح: "+q.a[q.c];
-feedback.style.color="red";
-}
-
-let next=document.createElement("button");
-next.className="btn";
-next.textContent="السؤال التالي";
-next.onclick=()=>{
-footballIndex++;
-showFootballQuestion();
-};
 
 box.append(feedback,next);
 };
