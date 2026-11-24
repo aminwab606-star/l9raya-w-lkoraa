@@ -3,76 +3,70 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>القراية والكورة بالـ AI</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>القراية والكورة AI</title>
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{
 font-family:Arial,sans-serif;
-background:#f4f7ff;color:#172554;
+background:#f3f6fc;color:#172554;
 line-height:1.8
 }
 header{
-background:white;padding:15px 6%;
+background:white;padding:15px 5%;
 display:flex;justify-content:space-between;
 align-items:center;flex-wrap:wrap;gap:15px;
-box-shadow:0 3px 15px #dce5f5;
+box-shadow:0 3px 15px #ddd;
 position:sticky;top:0;z-index:10
 }
-.logo{font-size:21px;font-weight:bold;color:#2563eb}
+.logo{font-size:22px;font-weight:bold;color:#2563eb}
 nav{display:flex;gap:15px;flex-wrap:wrap}
 nav a{text-decoration:none;color:#334155;font-weight:bold}
 nav a:hover{color:#2563eb}
 .hero{
-padding:80px 20px;text-align:center;
+padding:75px 20px;text-align:center;
 background:linear-gradient(135deg,#dbeafe,#eff6ff)
 }
-.hero h1{font-size:36px;color:#1e40af}
-.hero p{font-size:18px;color:#475569;margin-top:12px}
+.hero h1{font-size:35px;color:#1d4ed8}
+.hero p{margin:12px;color:#475569}
 .btn{
-background:#2563eb;color:white;border:0;
-padding:12px 23px;border-radius:10px;
-cursor:pointer;font-size:15px;
-text-decoration:none;display:inline-block;
-margin-top:15px
+border:0;background:#2563eb;color:white;
+padding:12px 22px;border-radius:10px;
+cursor:pointer;margin:8px;font-size:15px
 }
 .btn:hover{background:#1d4ed8}
-section{padding:50px 7%;text-align:center}
-h2{font-size:29px;margin-bottom:20px}
+.green{background:#16a34a}
+.green:hover{background:#15803d}
+section{padding:45px 6%;text-align:center}
+h2{margin-bottom:20px;font-size:28px}
 .cards{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 gap:20px;margin-top:25px
 }
 .card{
-background:white;padding:25px;
+background:white;padding:23px;
 border-radius:16px;
 box-shadow:0 4px 15px #dce5f5
 }
-.card h3{color:#2563eb;margin:10px 0}
+.card h3{color:#2563eb;margin:10px}
 .card p{color:#64748b}
 .emoji{font-size:42px}
-select{
-width:100%;max-width:400px;
-padding:13px;margin:8px;
+select,input,textarea{
+width:100%;max-width:450px;
+padding:13px;margin:10px auto;
 border:1px solid #cbd5e1;
 border-radius:10px;font-size:16px;
-background:white
+display:block;background:white
 }
-.lesson{
+.lesson,.question,.content-box{
 background:white;padding:25px;
 margin:20px auto;max-width:800px;
 border-radius:15px;text-align:right;
 box-shadow:0 3px 15px #dce5f5
 }
-.lesson h3{color:#2563eb;margin-bottom:12px}
-.lesson p{margin:10px 0}
-.question{
-background:white;padding:22px;
-margin:20px auto;max-width:650px;
-border-radius:15px;text-align:right
-}
+.lesson h3{color:#2563eb}
 .answer{
 display:block;width:100%;padding:13px;
 margin:10px 0;border:1px solid #cbd5e1;
@@ -82,18 +76,21 @@ text-align:right;cursor:pointer;font-size:16px
 .answer:hover{background:#dbeafe}
 .answer:disabled{cursor:default}
 .result{margin-top:15px;font-weight:bold}
-#studyResult{margin-top:20px}
-.ai-box{
-max-width:700px;margin:auto;
-padding:30px;background:white;
-border-radius:15px;box-shadow:0 4px 15px #dce5f5
-}
+#quiz,#footballQuiz{margin-top:20px}
 footer{
 background:#172554;color:white;
-padding:25px;text-align:center
+padding:30px;text-align:center
 }
+.hidden{display:none}
+.badge{
+display:inline-block;background:#dbeafe;
+color:#1d4ed8;padding:5px 12px;
+border-radius:20px;margin:5px
+}
+ul{padding-right:25px}
+li{margin:8px 0}
 @media(max-width:600px){
-.hero h1{font-size:27px}
+.hero h1{font-size:26px}
 header{justify-content:center}
 nav{justify-content:center}
 section{padding:35px 5%}
@@ -104,7 +101,7 @@ section{padding:35px 5%}
 <body>
 
 <header>
-<div class="logo">📚 القراية والكورة AI</div>
+<div class="logo">📚⚽ القراية والكورة AI</div>
 <nav>
 <a href="#home">الرئيسية</a>
 <a href="#study">الدراسة</a>
@@ -115,14 +112,17 @@ section{padding:35px 5%}
 </header>
 
 <div class="hero" id="home">
-<h1>مرحبا بك في عالم المعرفة والرياضة 🚀</h1>
-<p>تعلم، اكتشف، اختبر معلوماتك وطور مهاراتك.</p>
-<a href="#study" class="btn">ابدأ التعلم الآن</a>
+<h1>مرحبا بك في القراية والكورة 🚀</h1>
+<p>منصة تجمع التعلم والرياضة في مكان واحد</p>
+<a href="#study"><button class="btn">ابدأ الدراسة 📚</button></a>
+<a href="#football"><button class="btn green">اكتشف كرة القدم ⚽</button></a>
 </div>
+
+<!-- الدراسة -->
 
 <section id="study">
 <h2>📚 المكتبة التعليمية</h2>
-<p>اختار المستوى والمادة باش تشوف الدروس ديالك.</p>
+<p>اختار المستوى والمادة والدرس</p>
 
 <select id="level" onchange="loadSubjects()">
 <option value="">اختار المستوى</option>
@@ -136,94 +136,117 @@ section{padding:35px 5%}
 <option value="">اختار المادة</option>
 </select>
 
-<div class="cards" id="lessons">
-<div class="card">
-<div class="emoji">📖</div>
-<h3>الدروس</h3>
-<p>اختار المستوى والمادة لبدء التعلم.</p>
-</div>
-</div>
-
+<div class="cards" id="lessons"></div>
 <div id="lessonContent"></div>
 </section>
 
-<section id="exams">
-<h2>🎓 التمارين والامتحانات</h2>
-<p>جاوب على الأسئلة واكتشف النتيجة ديالك.</p>
+<!-- الامتحانات -->
 
-<div class="card" style="margin-top:20px">
+<section id="exams">
+<h2>🎓 الامتحانات والتمارين</h2>
+<p>اختبر معلوماتك واحصل على نقطتك مباشرة</p>
+<div class="card">
 <div class="emoji">📝</div>
-<h3>اختبار المعرفة</h3>
-<p>خاصك تختار درس قبل ما تبدأ الامتحان.</p>
+<h3>امتحان الدروس</h3>
 <button class="btn" onclick="startQuiz()">ابدأ الامتحان</button>
 <div id="quiz"></div>
 </div>
 </section>
 
+<!-- كرة القدم -->
+
 <section id="football">
 <h2>⚽ عالم كرة القدم</h2>
+<p>تعلم كرة القدم وطوّر مهاراتك</p>
+
 <div class="cards">
+
 <div class="card">
 <div class="emoji">⚽</div>
-<h3>أخبار كرة القدم</h3>
-<p>اكتشف أخبار عالم كرة القدم.</p>
+<h3>المهارات الأساسية</h3>
+<p>تعلم التحكم في الكرة والتمرير والمراوغة والتسديد.</p>
+<button class="btn" onclick="showFootball('skills')">اكتشف المهارات</button>
 </div>
+
+<div class="card">
+<div class="emoji">🏃</div>
+<h3>التدريبات</h3>
+<p>تعرف على تدريبات مناسبة لتطوير مهاراتك.</p>
+<button class="btn" onclick="showFootball('training')">عرض التدريبات</button>
+</div>
+
+<div class="card">
+<div class="emoji">📖</div>
+<h3>قوانين كرة القدم</h3>
+<p>تعرف على قوانين اللعبة والحكام والمخالفات.</p>
+<button class="btn" onclick="showFootball('rules')">تعلم القوانين</button>
+</div>
+
 <div class="card">
 <div class="emoji">🏆</div>
-<h3>البطولات</h3>
-<p>تعرف على الفرق والبطولات.</p>
+<h3>اختبار كرة القدم</h3>
+<p>اختبر معلوماتك الرياضية.</p>
+<button class="btn green" onclick="startFootballQuiz()">ابدأ الاختبار</button>
 </div>
+
 <div class="card">
-<div class="emoji">🥇</div>
-<h3>الأكاديمية</h3>
-<p>تعرف على عالم التدريب والتطوير.</p>
+<div class="emoji">📅</div>
+<h3>البرنامج الأسبوعي</h3>
+<p>نموذج لتنظيم تدريباتك خلال الأسبوع.</p>
+<button class="btn" onclick="showFootball('plan')">شاهد البرنامج</button>
 </div>
+
+<div class="card">
+<div class="emoji">🧤</div>
+<h3>مراكز اللاعبين</h3>
+<p>تعرف على مهام حارس المرمى والمدافع والوسط والمهاجم.</p>
+<button class="btn" onclick="showFootball('positions')">اكتشف المراكز</button>
 </div>
+
+</div>
+
+<div id="footballContent"></div>
+<div id="footballQuiz"></div>
 </section>
+
+<!-- الأستاذ الذكي -->
 
 <section id="ai">
 <h2>🤖 الأستاذ الذكي</h2>
-<div class="ai-box">
+<div class="content-box">
 <div class="emoji">🧠</div>
-<h3>الأستاذ AI</h3>
-<p>مساعدك في فهم الدروس والإجابة على الأسئلة.</p>
-<p>سيتم تفعيل المحادثة الذكية بعد ربط الموقع بخدمة AI آمنة.</p>
+<h3>المساعد التعليمي</h3>
+<p>هنا غادي يكون المساعد الذكي لشرح الدروس والإجابة عن الأسئلة.</p>
+<p class="badge">واجهة جاهزة - تحتاج ربط API لتفعيل AI الحقيقي</p>
 </div>
 </section>
 
 <footer>
-<p>© 2026 القراية والكورة بالـ AI</p>
-<p>التعليم والمعرفة والرياضة في مكان واحد ❤️</p>
+<h3>📚⚽ القراية والكورة AI</h3>
+<p>التعليم والرياضة طريق النجاح</p>
+<p>© 2026 جميع الحقوق محفوظة</p>
 </footer>
 
 <script>
 
-const database={
+// قاعدة بيانات الدروس
 
+const database = {
 "ابتدائي":{
 "الرياضيات":[
 {
 title:"الجمع والطرح",
-content:"الجمع هو إضافة عدد إلى عدد آخر. مثال: 5 + 3 = 8. أما الطرح فهو إزالة عدد من عدد آخر. مثال: 9 - 4 = 5.",
+content:"الجمع هو إضافة عدد إلى عدد آخر. مثال: 5 + 3 = 8. الطرح هو إنقاص عدد من عدد آخر. مثال: 9 - 4 = 5.",
 questions:[
 {q:"5 + 3 = ؟",a:["6","8","9"],c:1},
-{q:"9 - 4 = ؟",a:["5","4","6"],c:0},
-{q:"10 + 5 = ؟",a:["12","15","20"],c:1}
-]
-},
-{
-title:"الضرب",
-content:"الضرب هو جمع العدد عدة مرات. مثال: 3 × 4 = 12.",
-questions:[
-{q:"3 × 4 = ؟",a:["7","12","16"],c:1},
-{q:"5 × 2 = ؟",a:["10","12","15"],c:0}
+{q:"9 - 4 = ؟",a:["5","4","6"],c:0}
 ]
 }
 ],
 "اللغة العربية":[
 {
 title:"الاسم والفعل والحرف",
-content:"الاسم يدل على إنسان أو حيوان أو شيء أو مكان. الفعل يدل على حدث مرتبط بزمن. والحرف يربط الكلمات ويكمل المعنى.",
+content:"الاسم يدل على إنسان أو حيوان أو شيء أو مكان. الفعل يدل على حدث. الحرف يربط الكلمات.",
 questions:[
 {q:"كلمة مدرسة هي:",a:["اسم","فعل","حرف"],c:0},
 {q:"كلمة يكتب هي:",a:["اسم","فعل","حرف"],c:1}
@@ -233,20 +256,18 @@ questions:[
 "الفرنسية":[
 {
 title:"Les salutations",
-content:"Bonjour تعني صباح الخير أو مرحبا. Merci تعني شكرا. Au revoir تعني إلى اللقاء.",
+content:"Bonjour تعني مرحبا، Merci تعني شكرا، Au revoir تعني إلى اللقاء.",
 questions:[
-{q:"Que signifie Bonjour ?",a:["Merci","Bonjour","Au revoir"],c:1},
 {q:"Que signifie Merci ?",a:["شكرا","مرحبا","وداعا"],c:0}
 ]
 }
 ]
 },
-
 "إعدادي":{
 "الرياضيات":[
 {
 title:"الأعداد النسبية",
-content:"العدد النسبي هو عدد يمكن كتابته على شكل كسر a/b، حيث b لا يساوي الصفر.",
+content:"العدد النسبي هو عدد يمكن كتابته على شكل كسر a/b حيث b لا يساوي الصفر.",
 questions:[
 {q:"هل 1/2 عدد نسبي؟",a:["نعم","لا"],c:0},
 {q:"3/4 + 1/4 = ؟",a:["1","2","3"],c:0}
@@ -256,10 +277,9 @@ questions:[
 "الفيزياء":[
 {
 title:"السرعة",
-content:"السرعة المتوسطة تساوي المسافة المقطوعة مقسومة على المدة الزمنية. القانون: v = d / t.",
+content:"السرعة المتوسطة تساوي المسافة مقسومة على الزمن. القانون v = d / t.",
 questions:[
-{q:"قانون السرعة هو:",a:["v=d/t","v=d×t","v=t/d"],c:0},
-{q:"وحدة السرعة الدولية هي:",a:["kg","m/s","Newton"],c:1}
+{q:"قانون السرعة هو:",a:["v=d/t","v=d×t","v=t/d"],c:0}
 ]
 }
 ],
@@ -273,21 +293,20 @@ questions:[
 }
 ]
 },
-
 "ثانوي":{
 "الرياضيات":[
 {
 title:"الدوال الرياضية",
 content:"الدالة الرياضية تربط كل عنصر من مجموعة الانطلاق بعنصر واحد فقط من مجموعة الوصول.",
 questions:[
-{q:"الدالة تربط كل عنصر بـ:",a:["عنصر واحد","عنصرين دائما","لا شيء"],c:0}
+{q:"الدالة تربط كل عنصر بـ:",a:["عنصر واحد","عنصرين","لا شيء"],c:0}
 ]
 }
 ],
 "الفيزياء":[
 {
 title:"قوانين نيوتن",
-content:"القانون الأول لنيوتن هو مبدأ العطالة: يحافظ الجسم على حالة السكون أو الحركة المستقيمة المنتظمة إذا كانت محصلة القوى المؤثرة عليه منعدمة.",
+content:"القانون الأول لنيوتن هو مبدأ العطالة، ويحافظ الجسم على حالته إذا كانت محصلة القوى منعدمة.",
 questions:[
 {q:"القانون الأول لنيوتن يسمى:",a:["مبدأ العطالة","قانون الطاقة","قانون الحرارة"],c:0}
 ]
@@ -296,14 +315,13 @@ questions:[
 "الفلسفة":[
 {
 title:"مفهوم الحرية",
-content:"الحرية مفهوم فلسفي يرتبط بقدرة الإنسان على الاختيار وتحمل مسؤولية أفعاله.",
+content:"الحرية مفهوم يرتبط بقدرة الإنسان على الاختيار وتحمل مسؤولية أفعاله.",
 questions:[
 {q:"الحرية ترتبط بـ:",a:["الاختيار والمسؤولية","السرعة","الحساب"],c:0}
 ]
 }
 ]
 },
-
 "جامعة":{
 "القانون":[
 {
@@ -318,23 +336,13 @@ questions:[
 "الاقتصاد":[
 {
 title:"مفهوم الاقتصاد",
-content:"علم الاقتصاد يدرس كيفية استخدام الموارد المحدودة لتلبية الحاجات الإنسانية المتعددة.",
+content:"علم الاقتصاد يدرس كيفية استخدام الموارد المحدودة لتلبية الحاجات الإنسانية.",
 questions:[
 {q:"الاقتصاد يدرس:",a:["الموارد والحاجات","الألوان","الطقس"],c:0}
 ]
 }
-],
-"التاريخ":[
-{
-title:"مدخل إلى التاريخ",
-content:"التاريخ هو دراسة أحداث الماضي اعتمادا على المصادر والوثائق التاريخية.",
-questions:[
-{q:"التاريخ يهتم بدراسة:",a:["أحداث الماضي","المستقبل فقط","الرياضيات"],c:0}
 ]
 }
-]
-}
-
 };
 
 let currentLesson=null;
@@ -342,6 +350,7 @@ let score=0;
 let questionIndex=0;
 
 // تحميل المواد
+
 function loadSubjects(){
 const level=document.getElementById("level").value;
 const subject=document.getElementById("subject");
@@ -355,7 +364,7 @@ currentLesson=null;
 if(!level)return;
 
 Object.keys(database[level]).forEach(name=>{
-const option=document.createElement("option");
+let option=document.createElement("option");
 option.value=name;
 option.textContent=name;
 subject.appendChild(option);
@@ -363,6 +372,7 @@ subject.appendChild(option);
 }
 
 // عرض الدروس
+
 function showLessons(){
 const level=document.getElementById("level").value;
 const subject=document.getElementById("subject").value;
@@ -370,54 +380,58 @@ const area=document.getElementById("lessons");
 
 area.innerHTML="";
 document.getElementById("lessonContent").innerHTML="";
-document.getElementById("quiz").innerHTML="";
 currentLesson=null;
 
 if(!subject)return;
 
 database[level][subject].forEach((lesson,index)=>{
-const card=document.createElement("div");
+let card=document.createElement("div");
 card.className="card";
 
-const icon=document.createElement("div");
-icon.className="emoji";
-icon.textContent="📖";
-
-const title=document.createElement("h3");
+let title=document.createElement("h3");
 title.textContent=lesson.title;
 
-const description=document.createElement("p");
-description.textContent=level+" - "+subject;
-
-const button=document.createElement("button");
+let button=document.createElement("button");
 button.className="btn";
 button.textContent="اقرأ الدرس";
 button.onclick=()=>openLesson(index);
 
-card.append(icon,title,description,button);
+card.append(title,button);
 area.appendChild(card);
 });
 }
 
 // فتح الدرس
+
 function openLesson(index){
 const level=document.getElementById("level").value;
 const subject=document.getElementById("subject").value;
 
 currentLesson=database[level][subject][index];
 
-document.getElementById("lessonContent").innerHTML=`
-<div class="lesson">
-<h3>📚 ${currentLesson.title}</h3>
-<p>${currentLesson.content}</p>
-<p>عدد أسئلة الاختبار: ${currentLesson.questions.length}</p>
-<button class="btn" onclick="startQuiz()">اختبر معلوماتك</button>
-</div>`;
+let box=document.getElementById("lessonContent");
+box.innerHTML="";
 
-document.getElementById("quiz").innerHTML="";
+let article=document.createElement("div");
+article.className="lesson";
+
+let title=document.createElement("h3");
+title.textContent="📖 "+currentLesson.title;
+
+let content=document.createElement("p");
+content.textContent=currentLesson.content;
+
+let button=document.createElement("button");
+button.className="btn";
+button.textContent="اختبر معلوماتك";
+button.onclick=startQuiz;
+
+article.append(title,content,button);
+box.appendChild(article);
 }
 
-// بدء الاختبار
+// الامتحانات
+
 function startQuiz(){
 if(!currentLesson){
 alert("اختار المستوى والمادة وافتح درسا أولا.");
@@ -430,55 +444,66 @@ document.getElementById("exams").scrollIntoView();
 showQuestion();
 }
 
-// عرض الأسئلة
 function showQuestion(){
 const questions=currentLesson.questions;
 const area=document.getElementById("quiz");
+area.innerHTML="";
 
 if(questionIndex>=questions.length){
 area.innerHTML=`
 <div class="question">
 <h3>🎉 انتهى الامتحان!</h3>
-<p>النقطة ديالك: ${score} / ${questions.length}</p>
+<p>النقطة: ${score} / ${questions.length}</p>
 <p>النسبة: ${Math.round(score/questions.length*100)}%</p>
-<p>${score===questions.length?"ممتاز! جميع الأجوبة صحيحة 👏":"واصل التعلم وحاول مرة أخرى 💪"}</p>
-<button class="btn" onclick="startQuiz()">إعادة الاختبار</button>
+<button class="btn" onclick="startQuiz()">إعادة الامتحان</button>
 </div>`;
 return;
 }
 
 const q=questions[questionIndex];
 
-area.innerHTML=`
-<div class="question">
-<h3>السؤال ${questionIndex+1} من ${questions.length}</h3>
-<p>${q.q}</p>
-${q.a.map((answer,index)=>`
-<button class="answer" onclick="checkAnswer(${index})">${answer}</button>
-`).join("")}
-<div id="feedback" class="result"></div>
-</div>`;
+let box=document.createElement("div");
+box.className="question";
+
+let title=document.createElement("h3");
+title.textContent="السؤال "+(questionIndex+1)+" من "+questions.length;
+
+let question=document.createElement("p");
+question.textContent=q.q;
+
+box.append(title,question);
+
+q.a.forEach((answer,index)=>{
+let button=document.createElement("button");
+button.className="answer";
+button.textContent=answer;
+button.onclick=()=>checkAnswer(index);
+box.appendChild(button);
+});
+
+area.appendChild(box);
 }
 
-// تصحيح الإجابات
 function checkAnswer(selected){
 const q=currentLesson.questions[questionIndex];
-const buttons=document.querySelectorAll(".answer");
+const area=document.getElementById("quiz");
+const buttons=area.querySelectorAll(".answer");
 
-buttons.forEach(button=>button.disabled=true);
+buttons.forEach(b=>b.disabled=true);
 
-const feedback=document.getElementById("feedback");
+let feedback=document.createElement("p");
+feedback.className="result";
 
 if(selected===q.c){
 score++;
-feedback.textContent="✅ جواب صحيح! أحسنت.";
+feedback.textContent="✅ جواب صحيح!";
 feedback.style.color="green";
 }else{
-feedback.textContent="❌ الجواب الصحيح هو: "+q.a[q.c];
+feedback.textContent="❌ الجواب الصحيح: "+q.a[q.c];
 feedback.style.color="red";
 }
 
-const next=document.createElement("button");
+let next=document.createElement("button");
 next.className="btn";
 next.textContent="السؤال التالي";
 next.onclick=()=>{
@@ -486,10 +511,177 @@ questionIndex++;
 showQuestion();
 };
 
-feedback.after(next);
+area.querySelector(".question").append(feedback,next);
+}
+
+// قسم كرة القدم
+
+const footballData={
+skills:{
+title:"⚽ المهارات الأساسية",
+items:[
+"التحكم في الكرة: حاول الحفاظ على الكرة قريبة من قدميك.",
+"التمرير: تعلم تمرير الكرة بدقة إلى زميلك.",
+"المراوغة: تدرب على تغيير الاتجاه والتحكم في الكرة.",
+"التسديد: تعلم توجيه الكرة نحو المرمى.",
+"اللعب الجماعي: تعلم التعاون والتواصل مع الفريق."
+]
+},
+training:{
+title:"🏃 التدريبات",
+items:[
+"الإحماء الخفيف قبل بداية التدريب.",
+"تمارين التحكم بالكرة في مساحة آمنة.",
+"التدرب على التمرير مع زميل.",
+"التدرب على تغيير الاتجاه والتوازن.",
+"تمارين التهدئة والراحة بعد التدريب."
+]
+},
+rules:{
+title:"📖 قوانين كرة القدم",
+items:[
+"يتكون كل فريق من 11 لاعبا داخل الملعب.",
+"تستمر المباراة العادية 90 دقيقة مقسمة إلى شوطين.",
+"توجد ركلة ركنية عندما تخرج الكرة من خط المرمى بعد لمسها من مدافع.",
+"الحكم مسؤول عن تطبيق قوانين اللعبة.",
+"التسلل له شروط محددة مرتبطة بمكان اللاعب ولحظة لعب الكرة."
+]
+},
+plan:{
+title:"📅 برنامج أسبوعي نموذجي",
+items:[
+"الاثنين: التحكم في الكرة والتمرير.",
+"الثلاثاء: الراحة أو نشاط خفيف.",
+"الأربعاء: المراوغة والتوازن.",
+"الخميس: التمرير والعمل الجماعي.",
+"الجمعة: تدريبات خفيفة.",
+"السبت: مباراة تدريبية.",
+"الأحد: الراحة والتعافي."
+]
+},
+positions:{
+title:"🧤 مراكز اللاعبين",
+items:[
+"حارس المرمى: حماية المرمى.",
+"المدافع: حماية المنطقة الخلفية.",
+"وسط الميدان: الربط بين الدفاع والهجوم.",
+"الجناح: اللعب على الأطراف وصناعة الفرص.",
+"المهاجم: محاولة تسجيل الأهداف."
+]
+}
+};
+
+function showFootball(type){
+const data=footballData[type];
+const area=document.getElementById("footballContent");
+area.innerHTML="";
+
+let box=document.createElement("div");
+box.className="content-box";
+
+let title=document.createElement("h3");
+title.textContent=data.title;
+box.appendChild(title);
+
+let list=document.createElement("ul");
+
+data.items.forEach(item=>{
+let li=document.createElement("li");
+li.textContent=item;
+list.appendChild(li);
+});
+
+box.appendChild(list);
+area.appendChild(box);
+}
+
+// اختبار كرة القدم
+
+const footballQuestions=[
+{q:"كم عدد لاعبي الفريق داخل الملعب؟",a:["9","11","12"],c:1},
+{q:"كم مدة المباراة العادية؟",a:["60 دقيقة","90 دقيقة","120 دقيقة"],c:1},
+{q:"من يحمي المرمى؟",a:["المهاجم","المدافع","حارس المرمى"],c:2},
+{q:"ما لون البطاقة التي تعني الطرد؟",a:["الأصفر","الأحمر","الأزرق"],c:1},
+{q:"كم عدد أشواط المباراة العادية؟",a:["شوط واحد","شوطان","ثلاثة"],c:1},
+{q:"من المسؤول عن تطبيق القوانين؟",a:["الحكم","الجمهور","المدرب"],c:0}
+];
+
+let footballScore=0;
+let footballIndex=0;
+
+function startFootballQuiz(){
+footballScore=0;
+footballIndex=0;
+document.getElementById("footballQuiz").innerHTML="";
+document.getElementById("football").scrollIntoView();
+showFootballQuestion();
+}
+
+function showFootballQuestion(){
+const area=document.getElementById("footballQuiz");
+area.innerHTML="";
+
+if(footballIndex>=footballQuestions.length){
+area.innerHTML=`
+<div class="question">
+<h3>🏆 انتهى الاختبار!</h3>
+<p>نتيجتك: ${footballScore} / ${footballQuestions.length}</p>
+<p>${Math.round(footballScore/footballQuestions.length*100)}%</p>
+<button class="btn" onclick="startFootballQuiz()">أعد الاختبار</button>
+</div>`;
+return;
+}
+
+let q=footballQuestions[footballIndex];
+
+let box=document.createElement("div");
+box.className="question";
+
+let title=document.createElement("h3");
+title.textContent="السؤال "+(footballIndex+1)+" من "+footballQuestions.length;
+
+let question=document.createElement("p");
+question.textContent=q.q;
+
+box.append(title,question);
+
+q.a.forEach((answer,index)=>{
+let button=document.createElement("button");
+button.className="answer";
+button.textContent=answer;
+
+button.onclick=()=>{
+box.querySelectorAll(".answer").forEach(b=>b.disabled=true);
+
+let feedback=document.createElement("p");
+feedback.className="result";
+
+if(index===q.c){
+footballScore++;
+feedback.textContent="✅ إجابة صحيحة!";
+feedback.style.color="green";
+}else{
+feedback.textContent="❌ الجواب الصحيح: "+q.a[q.c];
+feedback.style.color="red";
+}
+
+let next=document.createElement("button");
+next.className="btn";
+next.textContent="السؤال التالي";
+next.onclick=()=>{
+footballIndex++;
+showFootballQuestion();
+};
+
+box.append(feedback,next);
+};
+
+box.appendChild(button);
+});
+
+area.appendChild(box);
 }
 
 </script>
-
 </body>
 </html>
