@@ -5,33 +5,98 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>القراية والكورة بالـ AI</title>
+
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,sans-serif;background:#f5f8ff;color:#172554}
-header{background:white;padding:20px 7%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px;box-shadow:0 2px 10px #ddd}
-.logo{font-size:23px;font-weight:bold;color:#2563eb}
-nav a{margin:8px;text-decoration:none;color:#334155;font-weight:bold}
-.hero{text-align:center;padding:85px 20px;background:linear-gradient(135deg,#dbeafe,#eff6ff)}
-.hero h1{font-size:38px;margin-bottom:20px}
-.hero p{font-size:18px;color:#475569;line-height:2}
-.btn{display:inline-block;background:#2563eb;color:white;padding:14px 25px;border-radius:10px;text-decoration:none;margin-top:22px}
-section{padding:55px 7%;text-align:center}
-h2{font-size:30px;margin-bottom:25px}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
-.card{background:white;padding:30px 20px;border-radius:16px;box-shadow:0 4px 15px #dbeafe}
-.card h3{margin:15px 0;color:#2563eb}
-.card p{line-height:1.8;color:#64748b}
-.emoji{font-size:45px}
-footer{background:#172554;color:white;text-align:center;padding:25px}
+body{
+font-family:Arial,sans-serif;
+background:#f5f8ff;
+color:#172554;
+line-height:1.7
+}
+header{
+background:white;padding:18px 6%;
+display:flex;justify-content:space-between;
+align-items:center;flex-wrap:wrap;gap:15px;
+box-shadow:0 2px 12px #ddd;
+position:sticky;top:0;z-index:10
+}
+.logo{font-size:21px;font-weight:bold;color:#2563eb}
+nav{display:flex;flex-wrap:wrap;gap:15px}
+nav a{text-decoration:none;color:#334155;font-weight:bold}
+nav a:hover{color:#2563eb}
+.hero{
+text-align:center;padding:75px 20px;
+background:linear-gradient(135deg,#dbeafe,#eff6ff)
+}
+.hero h1{font-size:35px;margin-bottom:15px}
+.hero p{color:#475569;font-size:18px}
+.btn{
+display:inline-block;background:#2563eb;color:white;
+padding:12px 24px;border:0;border-radius:10px;
+text-decoration:none;cursor:pointer;margin-top:15px;
+font-size:15px
+}
+.btn:hover{background:#1d4ed8}
+section{padding:50px 7%;text-align:center}
+h2{font-size:29px;margin-bottom:25px}
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px
+}
+.card{
+background:white;padding:25px 20px;
+border-radius:15px;box-shadow:0 4px 15px #dbeafe;
+text-align:center
+}
+.card h3{color:#2563eb;margin:10px 0}
+.card p{color:#64748b}
+.emoji{font-size:42px}
+select,input{
+padding:13px;border:1px solid #cbd5e1;
+border-radius:9px;background:white;
+font-size:16px;width:100%;max-width:450px;
+margin:8px
+}
+.study-controls{margin-bottom:25px}
+.lesson{
+background:white;padding:25px;border-radius:14px;
+margin:15px auto;max-width:750px;text-align:right;
+box-shadow:0 3px 12px #ddd
+}
+.lesson h3{color:#2563eb;margin-bottom:12px}
+.question{
+background:white;padding:20px;margin:15px auto;
+max-width:650px;border-radius:12px;text-align:right
+}
+.answer{
+display:block;width:100%;padding:12px;margin:8px 0;
+border:1px solid #cbd5e1;border-radius:9px;
+background:#f8fafc;text-align:right;cursor:pointer
+}
+.answer:hover{background:#dbeafe}
+.answer:disabled{cursor:default}
+.result{font-weight:bold;margin-top:12px}
+footer{
+background:#172554;color:white;
+text-align:center;padding:25px
+}
+@media(max-width:600px){
+.hero h1{font-size:27px}
+header{justify-content:center}
+nav{justify-content:center}
+}
 </style>
 </head>
+
 <body>
 
 <header>
 <div class="logo">📚 القراية والكورة AI</div>
 <nav>
 <a href="#home">الرئيسية</a>
-<a href="#study">القراية</a>
+<a href="#study">الدراسة</a>
 <a href="#football">الكورة</a>
 <a href="#ai">الأستاذ AI</a>
 </nav>
@@ -40,27 +105,47 @@ footer{background:#172554;color:white;text-align:center;padding:25px}
 <div class="hero" id="home">
 <h1>مرحبا بك في عالم المعرفة والرياضة 🚀</h1>
 <p>تعلم، اكتشف، طور مهاراتك واستعن بالذكاء الاصطناعي.</p>
-<a class="btn" href="#study">اكتشف المنصة</a>
+<a class="btn" href="#study">ابدأ التعلم الآن</a>
 </div>
 
 <section id="study">
-<h2>📚 قسم الدراسة</h2>
-<div class="cards">
+<h2>📚 المنصة التعليمية</h2>
+<p>اختار المستوى والمادة باش تلقى الدروس والتمارين ديالك.</p>
+
+<div class="study-controls">
+<select id="level" onchange="loadSubjects()">
+<option value="">اختار المستوى الدراسي</option>
+<option value="ابتدائي">الابتدائي</option>
+<option value="إعدادي">الإعدادي</option>
+<option value="ثانوي">الثانوي</option>
+<option value="جامعة">الجامعة</option>
+</select>
+
+<select id="subject" onchange="showLessons()">
+<option value="">اختار المادة</option>
+</select>
+</div>
+
+<div id="lessons" class="cards">
 <div class="card">
 <div class="emoji">📖</div>
-<h3>الدروس</h3>
-<p>اكتشف الدروس وتعلم بطريقة سهلة.</p>
+<h3>مكتبة الدروس</h3>
+<p>اختار المستوى والمادة لعرض الدروس.</p>
 </div>
-<div class="card">
+</div>
+
+<div id="lessonContent"></div>
+</section>
+
+<section id="exams">
+<h2>🎓 الامتحانات والتمارين</h2>
+<p>اختبر معلوماتك واحسب نتيجتك.</p>
+<div class="card" style="margin-top:20px">
 <div class="emoji">📝</div>
-<h3>التمارين</h3>
-<p>اختبر معلوماتك من خلال التمارين.</p>
-</div>
-<div class="card">
-<div class="emoji">🎓</div>
-<h3>الامتحانات</h3>
-<p>تدرب واستعد للامتحانات.</p>
-</div>
+<h3>اختبار تجريبي</h3>
+<p>اختار درسا أولا من المكتبة باش تبدأ الاختبار.</p>
+<button class="btn" onclick="startQuiz()">ابدأ الامتحان</button>
+<div id="quiz"></div>
 </div>
 </section>
 
@@ -70,12 +155,12 @@ footer{background:#172554;color:white;text-align:center;padding:25px}
 <div class="card">
 <div class="emoji">⚽</div>
 <h3>أخبار الكرة</h3>
-<p>اكتشف عالم كرة القدم.</p>
+<p>تابع آخر أخبار كرة القدم.</p>
 </div>
 <div class="card">
 <div class="emoji">🏆</div>
 <h3>البطولات</h3>
-<p>تعرف على الفرق والبطولات.</p>
+<p>اكتشف الفرق والبطولات.</p>
 </div>
 <div class="card">
 <div class="emoji">🥇</div>
@@ -89,14 +174,284 @@ footer{background:#172554;color:white;text-align:center;padding:25px}
 <h2>🤖 الأستاذ الذكي AI</h2>
 <div class="card">
 <div class="emoji">🧠</div>
-<h3>تعلم مع الذكاء الاصطناعي</h3>
-<p>قريبا: أستاذ ذكي يشرح الدروس ويجيب على أسئلتك بالعربية والفرنسية.</p>
+<h3>تعلم مع الأستاذ الذكي</h3>
+<p>قريبا: أستاذ يشرح الدروس ويجيب على أسئلتك بالعربية والفرنسية.</p>
+<p>سيتم ربطه بخدمة الذكاء الاصطناعي في مرحلة مستقلة.</p>
 </div>
 </section>
 
 <footer>
-<p>© 2026 القراية والكورة بالـ AI - جميع الحقوق محفوظة</p>
+<p>© 2026 القراية والكورة بالـ AI</p>
 </footer>
 
+<script>
+
+// مكتبة الدروس التجريبية
+const database = {
+
+"ابتدائي":{
+"الرياضيات":[
+{
+title:"الجمع",
+content:"الجمع هو عملية رياضية نستعملها لإضافة عدد إلى عدد آخر. مثال: 5 + 3 = 8",
+questions:[
+{q:"5 + 3 = ؟",a:["6","8","9"],correct:1},
+{q:"10 + 4 = ؟",a:["14","12","15"],correct:0},
+{q:"7 + 2 = ؟",a:["8","9","10"],correct:1}
+]
+},
+{
+title:"الضرب",
+content:"الضرب هو جمع العدد عدة مرات. مثال: 3 × 4 = 12",
+questions:[
+{q:"3 × 4 = ؟",a:["7","12","16"],correct:1},
+{q:"5 × 2 = ؟",a:["10","12","15"],correct:0}
+]
+}
+],
+"اللغة العربية":[
+{
+title:"الاسم والفعل",
+content:"الاسم يدل على إنسان أو حيوان أو شيء أو مكان. الفعل يدل على حدث مرتبط بزمن.",
+questions:[
+{q:"كلمة مدرسة هي:",a:["اسم","فعل","حرف"],correct:0},
+{q:"كلمة كتب هي:",a:["اسم","فعل","حرف"],correct:1}
+]
+}
+],
+"الفرنسية":[
+{
+title:"Les salutations",
+content:"Bonjour signifie السلام أو صباح الخير. Merci signifie شكرا. Au revoir signifie إلى اللقاء.",
+questions:[
+{q:"Que signifie Bonjour ?",a:["شكرا","مرحبا","وداعا"],correct:1},
+{q:"Que signifie Merci ?",a:["شكرا","مرحبا","نعم"],correct:0}
+]
+}
+]
+},
+
+"إعدادي":{
+"الرياضيات":[
+{
+title:"الأعداد النسبية",
+content:"العدد النسبي هو عدد يمكن كتابته على شكل كسر a/b حيث b لا يساوي الصفر.",
+questions:[
+{q:"هل 1/2 عدد نسبي؟",a:["نعم","لا"],correct:0},
+{q:"3/4 + 1/4 = ؟",a:["1","2","3"],correct:0}
+]
+}
+],
+"الفيزياء":[
+{
+title:"السرعة",
+content:"السرعة المتوسطة تساوي المسافة المقطوعة مقسومة على المدة الزمنية: v = d / t",
+questions:[
+{q:"ما قانون السرعة؟",a:["v=d/t","v=d×t","v=t/d"],correct:0},
+{q:"وحدة السرعة في النظام الدولي؟",a:["kg","m/s","Newton"],correct:1}
+]
+}
+],
+"اللغة العربية":[
+{
+title:"الجملة الاسمية",
+content:"الجملة الاسمية تبدأ باسم وتتكون غالبا من مبتدأ وخبر.",
+questions:[
+{q:"الجملة الاسمية تبدأ بـ:",a:["اسم","فعل","حرف"],correct:0}
+]
+}
+]
+},
+
+"ثانوي":{
+"الرياضيات":[
+{
+title:"الدوال",
+content:"الدالة الرياضية تربط كل عنصر من مجموعة الانطلاق بعنصر واحد من مجموعة الوصول.",
+questions:[
+{q:"الدالة تربط كل عنصر بـ:",a:["عنصر واحد","عنصرين دائما","لا شيء"],correct:0}
+]
+}
+],
+"الفيزياء":[
+{
+title:"قوانين نيوتن",
+content:"القانون الأول لنيوتن: يبقى الجسم محافظا على حالته من السكون أو الحركة المستقيمة المنتظمة ما لم تؤثر عليه محصلة قوى.",
+questions:[
+{q:"ماذا يصف القانون الأول لنيوتن؟",a:["مبدأ العطالة","الطاقة","الحرارة"],correct:0}
+]
+}
+],
+"الفلسفة":[
+{
+title:"مفهوم الحرية",
+content:"الحرية مفهوم فلسفي يرتبط بقدرة الإنسان على الاختيار وتحمل مسؤولية أفعاله.",
+questions:[
+{q:"الحرية ترتبط بـ:",a:["الاختيار والمسؤولية","السرعة","الحساب"],correct:0}
+]
+}
+]
+},
+
+"جامعة":{
+"القانون":[
+{
+title:"القانون العام والقانون الخاص",
+content:"القانون العام ينظم العلاقات التي تكون الدولة طرفا فيها باعتبارها صاحبة سلطة عامة. أما القانون الخاص فينظم العلاقات بين الأفراد أو التي تتصرف فيها الدولة كشخص عادي.",
+questions:[
+{q:"القانون الذي ينظم نشاط الدولة بصفتها صاحبة سلطة عامة هو:",a:["القانون العام","القانون الخاص","القانون التجاري"],correct:0},
+{q:"القانون التجاري من فروع:",a:["القانون الخاص","القانون العام","القانون الدستوري"],correct:0}
+]
+}
+],
+"الاقتصاد":[
+{
+title:"مفهوم الاقتصاد",
+content:"علم الاقتصاد يدرس كيفية استخدام الموارد المحدودة لتلبية الحاجات الإنسانية المتعددة.",
+questions:[
+{q:"الاقتصاد يدرس:",a:["الموارد والحاجات","الألوان","الطقس"],correct:0}
+]
+}
+],
+"التاريخ":[
+{
+title:"مدخل إلى التاريخ",
+content:"التاريخ هو دراسة أحداث الماضي اعتمادا على المصادر والوثائق التاريخية.",
+questions:[
+{q:"التاريخ يهتم بدراسة:",a:["أحداث الماضي","المستقبل فقط","الرياضيات"],correct:0}
+]
+}
+]
+}
+
+};
+
+let currentLesson=null;
+let score=0;
+let questionIndex=0;
+
+// تحميل المواد حسب المستوى
+function loadSubjects(){
+const level=document.getElementById("level").value;
+const subject=document.getElementById("subject");
+subject.innerHTML='<option value="">اختار المادة</option>';
+document.getElementById("lessons").innerHTML="";
+document.getElementById("lessonContent").innerHTML="";
+document.getElementById("quiz").innerHTML="";
+
+if(!level)return;
+
+Object.keys(database[level]).forEach(s=>{
+subject.innerHTML+=`<option value="${s}">${s}</option>`;
+});
+}
+
+// عرض الدروس
+function showLessons(){
+const level=document.getElementById("level").value;
+const subject=document.getElementById("subject").value;
+const area=document.getElementById("lessons");
+
+document.getElementById("lessonContent").innerHTML="";
+document.getElementById("quiz").innerHTML="";
+
+if(!subject)return;
+
+area.innerHTML="";
+
+database[level][subject].forEach((lesson,index)=>{
+area.innerHTML+=`
+<div class="card">
+<div class="emoji">📖</div>
+<h3>${lesson.title}</h3>
+<p>${level} - ${subject}</p>
+<button class="btn" onclick="openLesson(${index})">اقرأ الدرس</button>
+</div>`;
+});
+}
+
+// فتح الدرس
+function openLesson(index){
+const level=document.getElementById("level").value;
+const subject=document.getElementById("subject").value;
+currentLesson=database[level][subject][index];
+
+document.getElementById("lessonContent").innerHTML=`
+<div class="lesson">
+<h3>📚 ${currentLesson.title}</h3>
+<p>${currentLesson.content}</p>
+<button class="btn" onclick="startQuiz()">اختبر معلوماتك</button>
+</div>`;
+}
+
+// بداية الامتحان
+function startQuiz(){
+if(!currentLesson){
+alert("اختار المستوى والمادة وافتح درسا أولا.");
+return;
+}
+
+score=0;
+questionIndex=0;
+document.getElementById("quiz").innerHTML="";
+document.getElementById("exams").scrollIntoView();
+showQuestion();
+}
+
+// عرض سؤال
+function showQuestion(){
+const questions=currentLesson.questions;
+const area=document.getElementById("quiz");
+
+if(questionIndex>=questions.length){
+area.innerHTML=`
+<h3>🎉 انتهى الامتحان!</h3>
+<p>النتيجة ديالك: ${score} / ${questions.length}</p>
+<p>${score===questions.length?"ممتاز! جميع الأجوبة صحيحة 👏":"واصل التعلم وحاول مرة أخرى 💪"}</p>
+<button class="btn" onclick="startQuiz()">إعادة الامتحان</button>`;
+return;
+}
+
+const q=questions[questionIndex];
+
+area.innerHTML=`
+<div class="question">
+<h3>السؤال ${questionIndex+1} من ${questions.length}</h3>
+<p>${q.q}</p>
+${q.a.map((answer,i)=>`
+<button class="answer" onclick="checkAnswer(${i})">${answer}</button>
+`).join("")}
+<div id="feedback" class="result"></div>
+</div>`;
+}
+
+// تصحيح الإجابة
+function checkAnswer(selected){
+const q=currentLesson.questions[questionIndex];
+const buttons=document.querySelectorAll(".answer");
+buttons.forEach(b=>b.disabled=true);
+
+const feedback=document.getElementById("feedback");
+
+if(selected===q.correct){
+score++;
+feedback.innerHTML="✅ جواب صحيح! أحسنت.";
+feedback.style.color="green";
+}else{
+feedback.innerHTML="❌ جواب غير صحيح. الجواب الصحيح: "+q.a[q.correct];
+feedback.style.color="red";
+}
+
+const next=document.createElement("button");
+next.className="btn";
+next.textContent="السؤال التالي";
+next.onclick=()=>{
+questionIndex++;
+showQuestion();
+};
+feedback.after(next);
+}
+
+</script>
 </body>
 </html>
